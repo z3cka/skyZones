@@ -9,7 +9,9 @@
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <!-- <link rel="stylesheet" href="/resources/demos/style.css" /> -->
   <style>
+  /*div { float: left; }*/
   p { margin: 0; }
+  #playing-area { float: left; }
   #draggables { float: left; }
   .draggable { clear: left; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
   #score .score { border-bottom: solid 3px; float: left; margin: 0 5%; text-align: center; width: 40%; }
@@ -17,8 +19,8 @@
   #score #red { border-color: red; }
   #score #blue { border-color: blue; }
   #playing-area { width: 695px; }
-  #board { float: left; }
-  .row { width: 565px; }
+  #board { padding-left: 130px; }
+  .row { float: left; width: 565px; }
   .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
   </style>
   <script>
@@ -35,15 +37,29 @@
         console.log($(this));
         switch ($(this).context.id) {
           case 'topLeft':
-            $('#'+ui.draggable.context.id).css({'left': '164px', 'top': '35px'});
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '170px', 
+              'top': '80px'
+            });
             break
           case 'middleLeft':
-            $('#'+ui.draggable.context.id).css({'left': '164px', 'top': '85px'});
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '170px', 
+              'top': '268px'
+            });
+            break
+          case 'bottomLeft':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '170px', 
+              'top': '456px'
+            });
             break
         }
         $('#'+ui.draggable.context.id).draggable( "disable" );
-        // console.log(event);
-        
+        // console.log(event);        
       }
     });
   });
@@ -62,7 +78,6 @@
       <div id="scoreblue" class="score">0</div>
     </div>    
   </div>
-</div>
   <div id="draggables">
     <div id="draggable1" class="draggable ui-widget-content">
       <p></p>
@@ -82,7 +97,7 @@
       <div id="topLeft" class="droppable ui-widget-header">
         <p></p>
       </div>
-      <div id="topMiddle" class="droppable ui-widget-header">
+      <div id="topCenter" class="droppable ui-widget-header">
         <p></p>
       </div>
       <div id="topRight" class="droppable ui-widget-header">
