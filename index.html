@@ -1,0 +1,207 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SkyZones</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css" /> -->
+  <style>
+  p { margin: 0; }
+  #playing-area { float: left; }
+  #draggables, #draggablesRight { float: left; }
+  .draggable { clear: left; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  #score .score { border-bottom: solid 3px; float: left; margin: 0 5%; text-align: center; width: 40%; }
+  #scores .score { border: none; }
+  #score #red { border-color: red; }
+  #score #blue { border-color: blue; }
+  /*#playing-area { width: 830px; }*/
+  #board { float: left; width: 575px; }
+  .row { float: left; width: 565px; }
+  .droppable, .spot { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+  /*.droppable.player1 { background: red; }*/
+  .player1 { background: red; }
+  /*.droppable.player2 { background: blue; }*/
+  .player2 { background: blue; }
+  .placeholder { border-color: white; }
+  </style>
+  <script>
+  $(function() {
+    $( ".draggable" ).draggable({ revert: "invalid" });
+    $( ".droppable" ).droppable({
+      hoverClass: "ui-state-active",
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( ui.draggable.context.className.substr(0,ui.draggable.context.className.indexOf(' ')) )
+          .removeClass( 'droppable' )
+          .removeClass( 'ui-droppable' )
+          ;
+          // .find( "p" )
+            // .html( "Dropped!" );
+        $('#'+ $(this).context.id).droppable( "disable" );
+        switch ($(this).context.id) {
+          // Left
+          case 'topLeft':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '170px', 
+              'top': '80px'
+            });
+            break
+          case 'middleLeft':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '170px', 
+              'top': '268px'
+            });
+            break
+          case 'bottomLeft':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '170px', 
+              'top': '456px'
+            });
+            break
+          // Center
+          case 'topCenter':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '361px', 
+              'top': '80px'
+            });
+            break
+          case 'middleCenter':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '361px', 
+              'top': '268px'
+            });
+            break
+          case 'bottomCenter':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '361px', 
+              'top': '456px'
+            });
+            break
+          // Right
+          case 'topRight':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '548px', 
+              'top': '80px'
+            });
+            break
+          case 'middleRight':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '548px', 
+              'top': '268px'
+            });
+            break
+          case 'bottomRight':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '548px', 
+              'top': '456px'
+            });
+            break
+        }
+        $('#'+ui.draggable.context.id).draggable( "disable" );
+        // console.log(event);        
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+
+<div id="playing-area">
+  <div id="score">
+    <div id="names">
+      <div id="red" class="score">Player 1</div>
+      <div id="blue" class="score">Player 2</div>
+    </div>
+    <div id="scores">
+      <div id="scorered" class="score">0</div>
+      <div id="scoreblue" class="score">0</div>
+    </div>    
+  </div>
+  <div id="draggables">
+    <div id="draggable1" class="player1 draggable">
+      <p></p>
+    </div>
+    <div id="draggable2" class="player1 draggable">
+      <p></p>
+    </div>
+    <div id="draggable3" class="player1 draggable">
+      <p></p>
+    </div>
+    <div id="draggable4" class="player1 draggable">
+      <p></p>
+    </div>
+    <div id="draggable5" class="player1 draggable">
+      <p></p>
+    </div>
+    <div id="draggable5" class="placeholder ui-widget-content">
+      <p></p>
+    </div>
+  </div>
+  <div id="board">
+    <div id="row1" class="row"> 
+      <div id="topLeft" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+      <div id="topCenter" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+      <div id="topRight" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+    </div>
+    <div id="row2" class="row"> 
+      <div id="middleLeft" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+      <div id="middleCenter" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+      <div id="middleRight" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+    </div>
+    <div id="row3" class="row"> 
+      <div id="bottomLeft" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+      <div id="bottomCenter" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+      <div id="bottomRight" class="spot droppable ui-widget-header">
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <div id="draggablesRight">
+    <div id="draggable6" class="player2 draggable">
+      <p></p>
+    </div>
+    <div id="draggable7" class="player2 draggable">
+      <p></p>
+    </div>
+    <div id="draggable8" class="player2 draggable">
+      <p></p>
+    </div>
+    <div id="draggable9" class="player2 draggable">
+      <p></p>
+    </div>
+    <div id="draggable10" class="player2 draggable">
+      <p></p>
+    </div>
+  </div> 
+</div>
+
+</body>
+</html>
