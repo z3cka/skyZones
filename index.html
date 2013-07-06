@@ -12,14 +12,14 @@
   /*div { float: left; }*/
   p { margin: 0; }
   #playing-area { float: left; }
-  #draggables { float: left; }
+  #draggables, #draggablesRight { float: left; }
   .draggable { clear: left; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
   #score .score { border-bottom: solid 3px; float: left; margin: 0 5%; text-align: center; width: 40%; }
   #scores .score { border: none; }
   #score #red { border-color: red; }
   #score #blue { border-color: blue; }
-  #playing-area { width: 695px; }
-  #board { padding-left: 130px; }
+  /*#playing-area { width: 830px; }*/
+  #board { float: left; width: 575px; }
   .row { float: left; width: 565px; }
   .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
   </style>
@@ -36,6 +36,7 @@
             .html( "Dropped!" );
         console.log($(this));
         switch ($(this).context.id) {
+          // Left
           case 'topLeft':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
@@ -54,6 +55,50 @@
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '170px', 
+              'top': '456px'
+            });
+            break
+          // Center
+          case 'topCenter':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '361px', 
+              'top': '80px'
+            });
+            break
+          case 'middleCenter':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '361px', 
+              'top': '268px'
+            });
+            break
+          case 'bottomCenter':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '361px', 
+              'top': '456px'
+            });
+            break
+          // Right
+          case 'topRight':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '548px', 
+              'top': '80px'
+            });
+            break
+          case 'middleRight':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '548px', 
+              'top': '268px'
+            });
+            break
+          case 'bottomRight':
+            $('#'+ui.draggable.context.id).css({
+              'position': 'absolute',
+              'left': '548px', 
               'top': '456px'
             });
             break
@@ -80,16 +125,19 @@
   </div>
   <div id="draggables">
     <div id="draggable1" class="draggable ui-widget-content">
-      <p></p>
+      <p>1</p>
     </div>
     <div id="draggable2" class="draggable ui-widget-content">
-      <p></p>
+      <p>2</p>
     </div>
     <div id="draggable3" class="draggable ui-widget-content">
-      <p></p>
+      <p>3</p>
     </div>
     <div id="draggable4" class="draggable ui-widget-content">
-      <p></p>
+      <p>4</p>
+    </div>
+    <div id="draggable5" class="draggable ui-widget-content">
+      <p>5</p>
     </div>
   </div>
   <div id="board">
@@ -125,6 +173,23 @@
       <div id="bottomRight" class="droppable ui-widget-header">
         <p></p>
       </div>
+    </div>
+  </div>
+  <div id="draggablesRight">
+    <div id="draggable6" class="draggable ui-widget-content">
+      <p>6</p>
+    </div>
+    <div id="draggable7" class="draggable ui-widget-content">
+      <p>7</p>
+    </div>
+    <div id="draggable8" class="draggable ui-widget-content">
+      <p>8</p>
+    </div>
+    <div id="draggable9" class="draggable ui-widget-content">
+      <p>9</p>
+    </div>
+    <div id="draggable10" class="draggable ui-widget-content">
+      <p>10</p>
     </div>
   </div> 
 </div>
