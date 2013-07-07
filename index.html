@@ -12,15 +12,15 @@
   p { margin: 0; }
   #playing-area { float: left; }
   #draggables, #draggablesRight { float: left; }
-  .draggable { clear: left; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  .draggable { clear: left; width: 50px; height: 50px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
   #score .score { border-bottom: solid 3px; float: left; margin: 0 5%; text-align: center; width: 40%; }
   #scores .score { border: none; }
   #score #red { border-color: red; }
   #score #blue { border-color: blue; }
   /*#playing-area { width: 830px; }*/
-  #board { float: left; width: 575px; }
+  #board { float: left; width: 350px; }
   .row { float: left; width: 565px; }
-  .droppable, .spot { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+  .droppable, .spot { width: 75px; height: 75px; padding: 0.5em; float: left; margin: 10px; }
   /*.droppable.player1 { background: red; }*/
   .player1 { background: red; }
   /*.droppable.player2 { background: blue; }*/
@@ -46,66 +46,66 @@
           case 'topLeft':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '170px', 
-              'top': '80px'
+              'left': '107px', 
+              'top': '63px'
             });
             break
           case 'middleLeft':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '170px', 
-              'top': '268px'
+              'left': '107px', 
+              'top': '177px'
             });
             break
           case 'bottomLeft':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '170px', 
-              'top': '456px'
+              'left': '107px', 
+              'top': '288px'
             });
             break
           // Center
           case 'topCenter':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '361px', 
-              'top': '80px'
+              'left': '221px', 
+              'top': '63px'
             });
             break
           case 'middleCenter':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '361px', 
-              'top': '268px'
+              'left': '221px', 
+              'top': '177px'
             });
             break
           case 'bottomCenter':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '361px', 
-              'top': '456px'
+              'left': '221px', 
+              'top': '288px'
             });
             break
           // Right
           case 'topRight':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '548px', 
-              'top': '80px'
+              'left': '333px', 
+              'top': '63px'
             });
             break
           case 'middleRight':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '548px', 
-              'top': '268px'
+              'left': '333px', 
+              'top': '177px'
             });
             break
           case 'bottomRight':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
-              'left': '548px', 
-              'top': '456px'
+              'left': '333px', 
+              'top': '288px'
             });
             break
         }
