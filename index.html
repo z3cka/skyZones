@@ -12,7 +12,7 @@
   p { margin: 0; }
   #playing-area { float: left; }
   #draggables, #draggablesRight { float: left; }
-  .draggable { clear: left; width: 50px; height: 50px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  .tile { clear: left; width: 50px; height: 50px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
   #score .score { border-bottom: solid 3px; float: left; margin: 0 5%; text-align: center; width: 40%; }
   #scores .score { border: none; }
   #score #red { border-color: red; }
@@ -29,18 +29,24 @@
   </style>
   <script>
   $(function() {
+    // make all tiles draggable
     $( ".draggable" ).draggable({ revert: "invalid" });
+    // don't allow player 2 to go first
+    $('#draggablesRight .player2').draggable('disable');
+    // event listener for player move
     $( ".droppable" ).droppable({
       hoverClass: "ui-state-active",
       drop: function( event, ui ) {
         $( this )
+          // player claims spot with tile
           .addClass( ui.draggable.context.className.substr(0,ui.draggable.context.className.indexOf(' ')) )
           .removeClass( 'droppable' )
-          .removeClass( 'ui-droppable' )
-          ;
+          .removeClass( 'ui-droppable' );
           // .find( "p" )
             // .html( "Dropped!" );
+        // lock tile on drop into spot
         $('#'+ $(this).context.id).droppable( "disable" );
+        // player spot claiming logic
         switch ($(this).context.id) {
           // Left
           case 'topLeft':
@@ -110,7 +116,19 @@
             break
         }
         $('#'+ui.draggable.context.id).draggable( "disable" );
-        // console.log(event);        
+        // player turn taking logic
+        switch (ui.draggable.context.className.substr(0,ui.draggable.context.className.indexOf(' '))) {
+          case 'player1':
+            // switch to player 2
+            $('#draggables .player1').draggable('disable');
+            $('#draggablesRight .player2').draggable('enable');
+            break
+          case 'player2':
+            // switch back to player 1
+            $('#draggablesRight .player2').draggable('disable');
+            $('#draggables .player1').draggable('enable');
+            break
+        }        
       }
     });
   });
@@ -130,19 +148,19 @@
     </div>    
   </div>
   <div id="draggables">
-    <div id="draggable1" class="player1 draggable">
+    <div id="draggable1" class="player1 tile draggable">
       <p></p>
     </div>
-    <div id="draggable2" class="player1 draggable">
+    <div id="draggable2" class="player1 tile draggable">
       <p></p>
     </div>
-    <div id="draggable3" class="player1 draggable">
+    <div id="draggable3" class="player1 tile draggable">
       <p></p>
     </div>
-    <div id="draggable4" class="player1 draggable">
+    <div id="draggable4" class="player1 tile draggable">
       <p></p>
     </div>
-    <div id="draggable5" class="player1 draggable">
+    <div id="draggable5" class="player1 tile draggable">
       <p></p>
     </div>
     <div id="draggable5" class="placeholder ui-widget-content">
@@ -185,19 +203,16 @@
     </div>
   </div>
   <div id="draggablesRight">
-    <div id="draggable6" class="player2 draggable">
+    <div id="draggable6" class="player2 tile draggable">
       <p></p>
     </div>
-    <div id="draggable7" class="player2 draggable">
+    <div id="draggable7" class="player2 tile draggable">
       <p></p>
     </div>
-    <div id="draggable8" class="player2 draggable">
+    <div id="draggable8" class="player2 tile draggable">
       <p></p>
     </div>
-    <div id="draggable9" class="player2 draggable">
-      <p></p>
-    </div>
-    <div id="draggable10" class="player2 draggable">
+    <div id="draggable9" class="player2 tile draggable">
       <p></p>
     </div>
   </div> 
