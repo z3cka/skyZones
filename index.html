@@ -48,6 +48,8 @@
             // .html( "Dropped!" );
         // lock tile on drop into spot
         $('#'+ $(this).context.id).droppable( "disable" );
+        // make dropped tile unavailable for more dragging
+        $('#'+ ui.draggable.context.id).removeClass('available');
         // player spot claiming logic
         switch ($(this).context.id) {
           // Left
@@ -123,12 +125,12 @@
           case 'player1':
             // switch to player 2
             $('#draggables .player1').draggable('disable');
-            $('#draggablesRight .player2').draggable('enable');
+            $('#draggablesRight .player2.available').draggable('enable');
             break
           case 'player2':
             // switch back to player 1
             $('#draggablesRight .player2').draggable('disable');
-            $('#draggables .player1').draggable('enable');
+            $('#draggables .player1.available').draggable('enable');
             break
         }        
       }
@@ -154,19 +156,19 @@
     </div>    
   </div>
   <div id="draggables">
-    <div id="draggable1" class="player1 tile draggable">
+    <div id="draggable1" class="player1 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable2" class="player1 tile draggable">
+    <div id="draggable2" class="player1 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable3" class="player1 tile draggable">
+    <div id="draggable3" class="player1 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable4" class="player1 tile draggable">
+    <div id="draggable4" class="player1 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable5" class="player1 tile draggable">
+    <div id="draggable5" class="player1 available tile draggable">
       <p></p>
     </div>
     <div id="draggable5" class="placeholder ui-widget-content">
@@ -209,16 +211,16 @@
     </div>
   </div>
   <div id="draggablesRight">
-    <div id="draggable6" class="player2 tile draggable">
+    <div id="draggable6" class="player2 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable7" class="player2 tile draggable">
+    <div id="draggable7" class="player2 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable8" class="player2 tile draggable">
+    <div id="draggable8" class="player2 available tile draggable">
       <p></p>
     </div>
-    <div id="draggable9" class="player2 tile draggable">
+    <div id="draggable9" class="player2 available tile draggable">
       <p></p>
     </div>
   </div> 
