@@ -59,21 +59,21 @@
               'left': '95px', 
               'top': '50px'
             });
-            break
+            break;
           case 'middleLeft':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '95px', 
               'top': '138px'
             });
-            break
+            break;
           case 'bottomLeft':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '95px',
               'top': '227px'
             });
-            break
+            break;
           // Center
           case 'topCenter':
             $('#'+ui.draggable.context.id).css({
@@ -81,21 +81,21 @@
               'left': '183px', 
               'top': '50px'
             });
-            break
+            break;
           case 'middleCenter':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '183px', 
               'top': '138px'
             });
-            break
+            break;
           case 'bottomCenter':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '183px', 
               'top': '227px'
             });
-            break
+            break;
           // Right
           case 'topRight':
             $('#'+ui.draggable.context.id).css({
@@ -103,21 +103,21 @@
               'left': '271px', 
               'top': '50px'
             });
-            break
+            break;
           case 'middleRight':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '271px', 
               'top': '138px'
             });
-            break
+            break;
           case 'bottomRight':
             $('#'+ui.draggable.context.id).css({
               'position': 'absolute',
               'left': '271px', 
               'top': '227px'
             });
-            break
+            break;
         }
         $('#'+ui.draggable.context.id).draggable( "disable" );
         // player turn taking logic
@@ -126,12 +126,12 @@
             // switch to player 2
             $('#draggables .player1').draggable('disable');
             $('#draggablesRight .player2.available').draggable('enable');
-            break
+            break;
           case 'player2':
             // switch back to player 1
             $('#draggablesRight .player2').draggable('disable');
             $('#draggables .player1.available').draggable('enable');
-            break
+            break;
         }        
       }
     });
